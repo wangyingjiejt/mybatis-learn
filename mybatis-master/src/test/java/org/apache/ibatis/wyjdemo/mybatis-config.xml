@@ -14,6 +14,9 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="org/apache/ibatis/wyjdemo/MbGoodsMapper.xml"/>
+        <!--1、通过package配置，优先级最高（会扫描这个目录下的所有Mapper）-->
+        <package name="org.apache.ibatis.wyjdemo"/>
+        <!--2、通过resource配置，还可以通过url,class;相关源码见-> org.apache.ibatis.builder.xml.XMLConfigBuilder.mapperElement-->
+        <!--<mapper resource="org/apache/ibatis/wyjdemo/MbGoodsMapper.xml"/>-->
     </mappers>
 </configuration>
