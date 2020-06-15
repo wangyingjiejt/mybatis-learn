@@ -35,6 +35,11 @@ import org.apache.ibatis.type.TypeHandlerRegistry;
  * 构建器的基类，建造者模式
  *
  */
+/**
+ * 这个抽象类的方法都不是抽象方法，这样做的目的是为了继承该类的子类直接去使用
+ * @author W.Y.J
+ * @date 2020/6/11 10:30
+ */
 public abstract class BaseBuilder {
   //需要配置，类型别名注册，类型处理器注册3个东西
   protected final Configuration configuration;

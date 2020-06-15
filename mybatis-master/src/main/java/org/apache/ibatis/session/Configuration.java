@@ -506,10 +506,10 @@ public class Configuration {
   //产生执行器
   public Executor newExecutor(Transaction transaction, ExecutorType executorType) {
     executorType = executorType == null ? defaultExecutorType : executorType;
-    //这句再做一下保护,囧,防止粗心大意的人将defaultExecutorType设成null?
+    //这句再做一下保护,囧,防止粗心大意的人将defaultExecutorType设成null? 这句写的有点6
     executorType = executorType == null ? ExecutorType.SIMPLE : executorType;
     Executor executor;
-    //然后就是简单的3个分支，产生3种执行器BatchExecutor/ReuseExecutor/SimpleExecutor
+    //然后就是简单的3个分支，产生3种执行器BatchExecutor/ReuseExecutor/SimpleExecutor，这里使用了模板方法的设计模式
     if (ExecutorType.BATCH == executorType) {
       executor = new BatchExecutor(this, transaction);
     } else if (ExecutorType.REUSE == executorType) {
