@@ -12,10 +12,25 @@ public class PluginTest {
    @Test
     public void test(){
 
-       List<MyInterceptor> interceptors=new ArrayList<>();
-       interceptors.add(new MyLoginInterceptor());
-       interceptors.add(new MyLogOutInterceptor());
-       HelloService helloService = (HelloService)SayHelloProxy.warp(new HelloServiceImpl(),interceptors);
-       helloService.sayHello();
+//       List<MyInterceptor> interceptors=new ArrayList<>();
+//       interceptors.add(new MyLoginInterceptor());
+//       interceptors.add(new MyLogOutInterceptor());
+       System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true"); //设置系统属性
+      HelloService target = new HelloServiceImpl();
+       MyTransactionInterceptor myTransactionInterceptor = new MyTransactionInterceptor();
+       target=(HelloService)myTransactionInterceptor.plugin(target);
+       MyLoginInterceptor interceptor = new MyLoginInterceptor();
+       target=(HelloService)interceptor.plugin(target);
+      target.sayHello();
    }
+
+    public static void main(String[] args) {
+        System.getProperties().put("sun.misc.ProxyGenerator.saveGeneratedFiles", "true"); //设置系统属性
+        HelloService target = new HelloServiceImpl();
+        MyTransactionInterceptor myTransactionInterceptor = new MyTransactionInterceptor();
+        target=(HelloService)myTransactionInterceptor.plugin(target);
+        MyLoginInterceptor interceptor = new MyLoginInterceptor();
+        target=(HelloService)interceptor.plugin(target);
+        target.sayHello();
+    }
 }

@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.*;
+
 /**
  * @Author W.Y.J
  * @Date 2020/10/27 22:49
@@ -12,21 +13,21 @@ public class SayHelloProxy implements InvocationHandler {
 
     private Object target;
 
-    private List<MyInterceptor> interceptors;
+    private MyInterceptor interceptor;
 
-    public SayHelloProxy(Object target, List<MyInterceptor> interceptors) {
+    public SayHelloProxy(Object target, MyInterceptor interceptor) {
         this.target = target;
-        this.interceptors = interceptors;
+        this.interceptor = interceptor;
     }
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        interceptors.forEach(i->i.intercept());
-        return method.invoke(target,args);
+        MyInvocation myInvocation = new MyInvocation(target, method, args);
+        return interceptor.intercept(myInvocation);
     }
 
-    public static Object warp(Object target,List<MyInterceptor>  interceptors){
+    public static Object warp(Object target, MyInterceptor interceptor) {
         return Proxy.newProxyInstance(target.getClass().getClassLoader(),
-                target.getClass().getInterfaces(),new SayHelloProxy(target, interceptors));
+                target.getClass().getInterfaces(), new SayHelloProxy(target, interceptor));
     }
 }
