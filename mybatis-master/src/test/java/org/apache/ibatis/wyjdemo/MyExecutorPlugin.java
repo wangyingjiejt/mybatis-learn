@@ -14,17 +14,15 @@ import java.util.Properties;
         method = "query",
         args = {MappedStatement.class,Object.class, RowBounds.class, ResultHandler.class }
 )})
-public class MySimplePlugin implements Interceptor {
+public class MyExecutorPlugin implements Interceptor {
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
         // 执行目标方法的前置处理
-        Object[] args = invocation.getArgs();
-        for (Object arg : args) {
-            System.err.println(arg);
-        }
+        System.out.println("我是executor前置消息");
 
         Object returnObject = invocation.proceed();
         // 执行目标方法的后置处理
+        System.out.println("我是executor后置消息");
         return returnObject;
     }
 

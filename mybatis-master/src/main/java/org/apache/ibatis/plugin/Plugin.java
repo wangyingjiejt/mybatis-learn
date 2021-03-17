@@ -116,6 +116,7 @@ public class Plugin implements InvocationHandler {
         //拦截其他的无效
         //当然我们可以覆盖Plugin.wrap方法，达到拦截其他类的功能
         if (signatureMap.containsKey(c)) {
+          //判断拦截器是否是针对当前接口的拦截器
           interfaces.add(c);
         }
       }

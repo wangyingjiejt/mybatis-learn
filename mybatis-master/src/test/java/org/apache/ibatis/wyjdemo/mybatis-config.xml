@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration  PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <plugins>
+        <!--针对executor的拦截器-->
+        <plugin interceptor="org.apache.ibatis.wyjdemo.MyExecutorPlugin"></plugin>
+        <!--针对executor2的拦截器-->
+        <plugin interceptor="org.apache.ibatis.wyjdemo.MyExecutorPlugin2"></plugin>
+        <!--针对StatementHandler的拦截器-->
+        <plugin interceptor="org.apache.ibatis.wyjdemo.MyStatementPlugin"></plugin>
+        <!--针对ResultHandler的拦截器-->
+        <plugin interceptor="org.apache.ibatis.wyjdemo.MyResultPlugin"></plugin>
+        <!--针对ParameterHandler的拦截器-->
+        <plugin interceptor="org.apache.ibatis.wyjdemo.MyParameterPlugin"></plugin>
+    </plugins>
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC">
