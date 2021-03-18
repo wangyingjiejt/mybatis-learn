@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/mybatis-master/mybatis.iml" filepath="$PROJECT_DIR$/mybatis-master/mybatis.iml" />
       <module fileurl="file://$PROJECT_DIR$/parent-master/mybatis-parent.iml" filepath="$PROJECT_DIR$/parent-master/mybatis-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Mybatis-PageHelper-master/pagehelper.iml" filepath="$PROJECT_DIR$/Mybatis-PageHelper-master/pagehelper.iml" />
     </modules>
   </component>
 </project>

@@ -107,6 +107,7 @@ public class CachingExecutor implements Executor {
         return list;
       }
     }
+    //又去调用Executor.query(),饶了一圈是为了看看是否需要开启缓存
     return delegate.<E> query(ms, parameterObject, rowBounds, resultHandler, key, boundSql);
   }
 
