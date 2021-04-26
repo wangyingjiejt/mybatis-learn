@@ -122,6 +122,7 @@ public abstract class BaseExecutor implements Executor {
       throw new ExecutorException("Executor was closed.");
     }
     //先清局部缓存，再更新，如何更新交由子类，模板方法模式
+    //所以一旦有新增、修改、删除操作缓存就会被清掉
     clearLocalCache();
     return doUpdate(ms, parameter);
   }
