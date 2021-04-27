@@ -517,7 +517,10 @@ public class Configuration {
     } else {
       executor = new SimpleExecutor(this, transaction);
     }
-    //如果要求缓存，生成另一种CachingExecutor(默认就是有缓存),装饰者模式,所以默认都是返回CachingExecutor
+    /**
+     * 这里的CachingExecutor是一个Executor的装饰者类，如果开启了缓存，就会将上边步骤得到的Executor
+     * 再包装一层缓存相关。使用的很巧妙。
+     */
     if (cacheEnabled) {
       executor = new CachingExecutor(executor);
     }

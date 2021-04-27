@@ -36,7 +36,9 @@ import org.apache.ibatis.transaction.Transaction;
  * @author Eduardo Macarron
  */
 /**
- * 二级缓存执行器
+ * 这个Executor的实现类有个delegate属性，这其实是应用了装饰者模式
+ * 在前边步骤选定的SimpleExecutor或者ReuseExecutor、BatchExecutor的基础上
+ * 又装饰了一层缓存执行器
  */
 public class CachingExecutor implements Executor {
 
@@ -92,7 +94,7 @@ public class CachingExecutor implements Executor {
   public <E> List<E> query(MappedStatement ms, Object parameterObject, RowBounds rowBounds, ResultHandler resultHandler, CacheKey key, BoundSql boundSql)
       throws SQLException {
     Cache cache = ms.getCache();
-    //默认情况下是没有开启缓存的(二级缓存).要开启二级缓存,你需要在你的 SQL 映射文件中添加一行: <cache/>
+    //默认情况下是没有开启缓存的(二级缓存).要开启二级缓存,你需要在Mapper.xml中添加<cache>配置
     //简单的说，就是先查CacheKey，查不到再委托给实际的执行器去查
     if (cache != null) {
       flushCacheIfRequired(ms);
