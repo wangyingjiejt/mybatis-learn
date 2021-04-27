@@ -25,7 +25,9 @@ import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.session.ResultHandler;
 
 /**
+ *
  * @author Clinton Begin
+ * 负责操作Statement与数据库进行交流
  */
 /**
  * 语句处理器

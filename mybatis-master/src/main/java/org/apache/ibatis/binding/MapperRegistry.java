@@ -73,6 +73,8 @@ public class MapperRegistry {
       }
       boolean loadCompleted = false;
       try {
+        //这里只是放入Mapper的工厂，并没有实际生成mapper的代理类，
+        //真正生成代理的地方org.apache.ibatis.binding.MapperRegistry.getMapper
         knownMappers.put(type, new MapperProxyFactory<T>(type));
         // It's important that the type is added before the parser is run
         // otherwise the binding may automatically be attempted by the

@@ -43,6 +43,7 @@ public class SimpleStatementHandler extends BaseStatementHandler {
     super(executor, mappedStatement, parameter, rowBounds, resultHandler, boundSql);
   }
 
+  // 用于通知 Statement 对象将 insert、update、delete 操作推送到数据库
   @Override
   public int update(Statement statement) throws SQLException {
     String sql = boundSql.getSql();

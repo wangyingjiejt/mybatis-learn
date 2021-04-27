@@ -39,6 +39,7 @@ public class MyTest {
         //2、获取sqlSession
         SqlSession sqlSession = sqlSessionFactory.openSession();
         Object o = sqlSession.selectOne("selectById","12");
+
         System.out.println(o);
     }
 }
