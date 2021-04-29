@@ -88,6 +88,7 @@ public class TransactionalCache implements Cache {
 
   @Override
   public void putObject(Object key, Object object) {
+    //只是临时放到map中，当提交时才会放到缓存
     entriesToAddOnCommit.put(key, object);
   }
 
@@ -122,6 +123,7 @@ public class TransactionalCache implements Cache {
     entriesMissedInCache.clear();
   }
 
+  //将数据添加到缓存
   private void flushPendingEntries() {
     for (Map.Entry<Object, Object> entry : entriesToAddOnCommit.entrySet()) {
       delegate.putObject(entry.getKey(), entry.getValue());

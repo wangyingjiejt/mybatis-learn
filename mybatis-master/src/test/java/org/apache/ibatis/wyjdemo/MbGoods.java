@@ -1,6 +1,8 @@
 package org.apache.ibatis.wyjdemo;
 
-public class MbGoods {
+import java.io.Serializable;
+
+public class MbGoods implements Serializable {
 
     private String id;
 

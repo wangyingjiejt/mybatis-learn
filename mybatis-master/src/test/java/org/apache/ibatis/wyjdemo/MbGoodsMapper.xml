@@ -8,7 +8,7 @@
             flushInterval="10800000"  size="512"
             readOnly="true"
 
-    />
+    ></cache>
 
     <select id="selectById" resultType="org.apache.ibatis.wyjdemo.MbGoods" useCache="true">
       select * from mb_goods where id = #{id}

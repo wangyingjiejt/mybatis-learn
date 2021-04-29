@@ -104,6 +104,7 @@ public class CachingExecutor implements Executor {
         List<E> list = (List<E>) tcm.getObject(cache, key);
         if (list == null) {
           list = delegate.<E> query(ms, parameterObject, rowBounds, resultHandler, key, boundSql);
+          //注意只是临时放到map中，当提交时才会放到缓存
           tcm.putObject(cache, key, list); // issue #578 and #116
         }
         return list;

@@ -25,7 +25,7 @@ import org.apache.ibatis.cache.decorators.TransactionalCache;
  */
 /**
  * 事务缓存管理器，被CachingExecutor使用
- *
+ * 二级缓存的数据存放在transactionalCaches的TransactionalCache中
  */
 public class TransactionalCacheManager {
 
